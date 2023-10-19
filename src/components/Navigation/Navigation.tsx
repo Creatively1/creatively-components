@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import cls from "classnames";
 import { Spinner } from "../Spinner";
 
@@ -8,6 +7,7 @@ type Navigation = {
   name: string;
   href?: string;
   label?: string;
+  icon?: "search" | "email";
   current?: boolean;
   isLoggedIn?: boolean;
 };
@@ -180,7 +180,7 @@ const BellIcon = () => (
 const ICONS_MAP = {
   search: <SearchIcon />,
   email: <EmailIcon />,
-};
+} as const;
 
 const ArrowBackIcon = () => (
   <svg
@@ -278,7 +278,7 @@ const Avatar = ({
     </div>
   );
 
-const Avatars = ({ avatars }: { avatars: string[] }) => (
+const Avatars = ({ avatars }: { avatars: (string | undefined)[] }) => (
   <div>
     {avatars.length > 1 ? (
       <div className="relative">
@@ -290,7 +290,7 @@ const Avatars = ({ avatars }: { avatars: string[] }) => (
         </div>
       </div>
     ) : (
-      <Avatar avatar={avatars[0]} alt="" />
+      <Avatar avatar={avatars[0]} />
     )}
   </div>
 );
@@ -308,8 +308,6 @@ const DesktopNavigationPanel = ({
     ? navigation.filter((item) => item.isLoggedIn)
     : navigation.filter((item) => !item.isLoggedIn);
 
-  console.log("currentNav", currentNav);
-  console.log("loggedIn", loggedIn);
   return (
     <div className="hidden sm:ml-8 sm:block ">
       <div className="flex gap-6">
@@ -326,7 +324,7 @@ const DesktopNavigationPanel = ({
             )}
             aria-current={item.current ? "page" : undefined}
           >
-            {ICONS_MAP[item.icon]}
+            {item.icon && ICONS_MAP?.[item.icon]}
             {item.label}
           </a>
         ))}
@@ -367,7 +365,7 @@ const ProfileDropdown = ({
   loading,
   onAccountSwitch,
   onLogOut,
-}: TNavigationProps) => {
+}: TProfileDropdownProps) => {
   const [accountsSectionOpen, toggleAccountsSection] = useState(false);
 
   const activeAccount = ACCOUNTS.find(
@@ -394,7 +392,7 @@ const ProfileDropdown = ({
         <Menu.Button className="relative  flex rounded bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span className="absolute -inset-1.5" />
           <span className="sr-only">Open user menu</span>
-          <Avatar avatar={avatar} alt="" />
+          <Avatar avatar={avatar} />
         </Menu.Button>
       </div>
       {!accountsSectionOpen ? (
@@ -525,6 +523,7 @@ type TNavigationProps = {
 };
 
 type TRightNavigationProps = Omit<TNavigationProps, "onLogIn">;
+type TProfileDropdownProps = Omit<TNavigationProps, "onLogIn">;
 
 export const Navigation = ({
   dropdownItems,
@@ -590,7 +589,6 @@ const RightNavigationPanel = ({
   loading,
   onAccountSwitch,
   onLogOut,
-  onLogIn,
 }: TRightNavigationProps) => (
   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
     <button
@@ -626,7 +624,6 @@ const RightNavigationPanel = ({
       loading={loading}
       onAccountSwitch={onAccountSwitch}
       onLogOut={onLogOut}
-      onLogIn={onLogIn}
     />
   </div>
 );
