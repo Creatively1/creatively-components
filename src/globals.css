@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "GTFRiposte";
+  font-display: swap;
+  src: url("./fonts/Riposte-Thin.woff") format("woff"),
+    url("./fonts/Riposte-Thin.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GTFRiposte";
+  font-display: swap;
+  src: url("./fonts/Riposte-Light.woff") format("woff"),
+    url("./fonts/Riposte-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GTFRiposte";
+  font-display: swap;
+  src: url("./fonts/Riposte-Regular.woff") format("woff"),
+    url("./fonts/Riposte-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  font-family: "GTFRiposte", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-font-smoothing: antialiased;
+}
