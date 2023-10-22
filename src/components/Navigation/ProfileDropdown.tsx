@@ -14,7 +14,10 @@ const ProfileDropdown = ({
   onAccountSwitch,
   onLogOut,
 }: TProfileDropdownProps) => {
-  const [accountsSectionOpen, toggleAccountsSection] = React.useState(false);
+  const [accountsSectionOpen, toggleAccountsSection] = [
+    false,
+    (x: boolean) => {},
+  ];
 
   const activeAccount = accounts.find(
     (account) => account.id === activeAccountID
