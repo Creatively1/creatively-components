@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Disclosure } from "@headlessui/react";
 import cls from "classnames";
-import { Spinner } from "../Spinner";
 import { ProfileDropdown } from "./ProfileDropdown";
 
 type Navigation = {
@@ -183,7 +182,7 @@ const ICONS_MAP = {
   email: <EmailIcon />,
 } as const;
 
-const ArrowBackIcon = () => (
+export const ArrowBackIcon = () => (
   <svg
     width="16"
     height="16"
@@ -204,7 +203,7 @@ const ArrowBackIcon = () => (
   </svg>
 );
 
-const Checkmark = () => (
+export const Checkmark = () => (
   <svg
     width="16"
     height="17"
@@ -259,7 +258,7 @@ const ProfileIcon = () => (
   </svg>
 );
 
-const Avatar = ({
+export const Avatar = ({
   avatar,
   extraDarkBg,
 }: {
@@ -340,7 +339,7 @@ type TSwitchAccountProps = {
   onClick: () => void;
 };
 
-const SwitchAccount = ({
+export const SwitchAccount = ({
   multipleSwitch,
   inactiveAccounts,
   onClick,

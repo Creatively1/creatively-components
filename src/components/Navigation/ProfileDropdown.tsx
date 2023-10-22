@@ -1,7 +1,9 @@
 import * as React from "react";
+import cls from "classnames";
 import { Menu, Transition } from "@headlessui/react";
 import type { TNavigationProps, Account } from "./Navigation";
-
+import { Spinner } from "../Spinner";
+import { Avatar, ArrowBackIcon, SwitchAccount, Checkmark } from "./Navigation";
 type TProfileDropdownProps = Omit<TNavigationProps, "onLogIn">;
 
 const ProfileDropdown = ({
