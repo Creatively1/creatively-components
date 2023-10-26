@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "GTFRiposte";
   font-display: swap;
   src: url("./fonts/Riposte-Thin.woff") format("woff"),
@@ -35,4 +35,4 @@ body {
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
-}
+} */

@@ -15,6 +15,8 @@ export default defineConfig([
     //     options.outbase = "./";
     //   },
     // },
+    entry: ["./src/components/!(index).ts?(x)"],
+    clean: true,
     minify: true,
     target: "es2018",
     external: ["react"],

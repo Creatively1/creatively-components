@@ -1,6 +1,6 @@
 {
   "name": "creatively-ui",
-  "version": "0.0.9",
+  "version": "0.0.20",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "sideEffects": false,
@@ -14,9 +14,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --treeshake",
+    "build": "tsup src/index.ts --format esm,cjs --dts --treeshake && npx tailwindcss build -i src/globals.css -o dist/tailwind.css -w",
     "storybook": "storybook dev -p 6006",
-    "release": "pnpm run build && changeset publish",
+    "release-build": "tsup src/index.ts --format esm,cjs --dts --treeshake",
+    "release": "changeset publish",
     "build-storybook": "storybook build",
     "lint": "tsc"
   },

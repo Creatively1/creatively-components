@@ -264,8 +264,8 @@ export const Avatar = ({
 }: {
   avatar?: string;
   extraDarkBg?: boolean;
-}) =>
-  !avatar ? (
+}) => {
+  return avatar ? (
     <img className="object-cover h-7 w-7 rounded" src={avatar} alt="" />
   ) : (
     <div
@@ -277,6 +277,7 @@ export const Avatar = ({
       <ProfileIcon />
     </div>
   );
+};
 
 const Avatars = ({ avatars }: { avatars: (string | undefined)[] }) => (
   <div>
@@ -336,7 +337,7 @@ const DesktopNavigationPanel = ({
 type TSwitchAccountProps = {
   multipleSwitch: boolean;
   inactiveAccounts: Account[];
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const SwitchAccount = ({
@@ -352,7 +353,9 @@ export const SwitchAccount = ({
     >
       <div className="flex items-center gap-4  " onClick={onClick}>
         <Avatars avatars={inactiveAccounts.map(({ avatar }) => avatar)} />
-        <div className="text-lg sm:text-base">Switch Account</div>
+        <div className="text-lg sm:text-base font-medium cursor-pointer">
+          Switch Account
+        </div>
       </div>
     </div>
   );

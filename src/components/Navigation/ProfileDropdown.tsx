@@ -35,9 +35,14 @@ const ProfileDropdown = ({
   };
 
   return (
-    <Menu as="div" className="relative ml-3 w-7 h-7">
+    <Menu as="div" className="relative w-7 h-7 ">
       <div>
-        <Menu.Button className="relative  flex rounded bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        <Menu.Button
+          className={cls(
+            "relative flex rounded text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800",
+            { "bg-gray-800": !avatar }
+          )}
+        >
           <span className="absolute -inset-1.5" />
           <span className="sr-only">Open user menu</span>
           <Avatar avatar={avatar} />
@@ -53,12 +58,12 @@ const ProfileDropdown = ({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="fixed bottom-0 w-full pt-2 sm:pt-0 pb-6 sm:pb-0 left-0 sm:left-auto sm:bottom-auto sm:absolute right-0 rounded-t-lg rounded-tr-lg z-10 mt-2 sm:w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:shadow-lg">
+          <Menu.Items className="fixed bottom-0 w-full pt-2 sm:pt-0 pb-6 sm:pb-0 left-0 sm:left-auto sm:bottom-auto sm:absolute right-0 rounded-t-lg rounded-tr-lg z-10 mt-2 sm:w-72 origin-top-right rounded-md bg-white focus:outline-none shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:shadow-lg">
             <div className="flex flex-col">
               <div className="flex justify-between items-center gap-4 p-4">
                 <div className="flex items-center gap-4">
                   <Avatar avatar={avatar} />
-                  <div className="text-lg sm:text-base">{name}</div>
+                  <div className="text-lg font-medium sm:text-base">{name}</div>
                 </div>
                 <Checkmark />
               </div>
@@ -71,31 +76,45 @@ const ProfileDropdown = ({
                       {
                         "bg-gray-100": false,
                       },
-                      "block px-4 py-2 my-1 sm:my-0 text-base sm:text-sm text-black hover:underline"
+                      "block px-4 py-2 my-1 sm:my-0 text-base sm:text-sm text-black cursor-pointer font-medium hover:underline"
                     )}
                   >
                     {label}
                   </a>
                 ))}
               </div>
-              {Boolean(canSwitch) && (
-                <SwitchAccount
-                  multipleSwitch={multipleSwitch}
-                  inactiveAccounts={inactiveAccounts}
-                  onClick={() => {
-                    multipleSwitch
-                      ? toggleAccountsSection(true)
-                      : handleSwitchAccount(inactiveAccounts[0].id);
-                  }}
-                />
-              )}
+              {Boolean(canSwitch) &&
+                (!multipleSwitch ? (
+                  <Menu.Button
+                    onClick={() => {
+                      multipleSwitch
+                        ? toggleAccountsSection(true)
+                        : handleSwitchAccount(inactiveAccounts[0].id);
+                    }}
+                  >
+                    <SwitchAccount
+                      multipleSwitch={multipleSwitch}
+                      inactiveAccounts={inactiveAccounts}
+                    />
+                  </Menu.Button>
+                ) : (
+                  <SwitchAccount
+                    multipleSwitch={multipleSwitch}
+                    inactiveAccounts={inactiveAccounts}
+                    onClick={() => {
+                      multipleSwitch
+                        ? toggleAccountsSection(true)
+                        : handleSwitchAccount(inactiveAccounts[0].id);
+                    }}
+                  />
+                ))}
 
               <Menu.Button
                 onClick={onLogOut}
                 className="flex border-t items-center gap-4 transition-all hover:bg-neutral-50 w-full"
               >
                 <div className="flex justify-center items-center px-4 py-3 gap-4 w-full">
-                  <div className="flex items-center text-lg sm:text-base">
+                  <div className="flex items-center text-lg sm:text-base font-medium cursor-pointer">
                     Log Out
                   </div>
                 </div>
@@ -128,7 +147,7 @@ const ProfileDropdown = ({
               >
                 <ArrowBackIcon />
               </div>
-              <div>Switch Accounts</div>
+              <div className="font-medium cursor-pointer">Switch Accounts</div>
             </div>
             <div className="border-t">
               {inactiveAccounts.map((account) => (
