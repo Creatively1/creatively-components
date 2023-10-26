@@ -69,7 +69,9 @@ const ProfileDropdown = ({
               </div>
               <div className="pl-12 pb-4">
                 {dropdownItems.map(({ label, link, callback }) => (
-                  <a
+                  <Menu.Button
+                    key={label}
+                    as="a"
                     href={link}
                     onClick={callback}
                     className={cls(
@@ -80,7 +82,7 @@ const ProfileDropdown = ({
                     )}
                   >
                     {label}
-                  </a>
+                  </Menu.Button>
                 ))}
               </div>
               {Boolean(canSwitch) &&
