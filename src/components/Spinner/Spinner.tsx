@@ -9,7 +9,7 @@ const Spinner = ({
     <svg
       aria-hidden="true"
       className={cls(
-        "w-8 h-8 text-gray-200 animate-spin text-gray-600 fill-blue-600",
+        "ui-w-8 ui-h-8 ui-text-gray-200 ui-animate-spin ui-text-gray-600 ui-fill-blue-600",
         additionalClassnames
       )}
       viewBox="0 0 100 101"
@@ -25,7 +25,7 @@ const Spinner = ({
         fill="black"
       />
     </svg>
-    <span className="sr-only">Loading...</span>
+    <span className="ui-sr-only">Loading...</span>
   </div>
 );
 

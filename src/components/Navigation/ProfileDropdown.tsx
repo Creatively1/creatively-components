@@ -35,39 +35,41 @@ const ProfileDropdown = ({
   };
 
   return (
-    <Menu as="div" className="relative w-7 h-7 ">
+    <Menu as="div" className="ui-relative ui-w-7 ui-h-7 ">
       <div>
         <Menu.Button
           className={cls(
-            "relative flex rounded text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800",
-            { "bg-gray-800": !avatar }
+            "ui-relative ui-flex ui-rounded ui-text-sm focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-white focus:ui-ring-offset-2 focus:ui-ring-offset-gray-800",
+            { "ui-bg-gray-800": !avatar }
           )}
         >
-          <span className="absolute -inset-1.5" />
-          <span className="sr-only">Open user menu</span>
+          <span className="ui-absolute -ui-inset-1.5" />
+          <span className="ui-sr-only">Open user menu</span>
           <Avatar avatar={avatar} />
         </Menu.Button>
       </div>
       {!accountsSectionOpen ? (
         <Transition
           as={React.Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
+          enter="ui-transition ui-ease-out ui-duration-100"
+          enterFrom="ui-transform ui-opacity-0 scale-95"
+          enterTo="ui-transform ui-opacity-100 scale-100"
+          leave="ui-transition ease-in ui-duration-75"
+          leaveFrom="ui-transform ui-opacity-100 scale-100"
+          leaveTo="ui-transform ui-opacity-0 scale-95"
         >
-          <Menu.Items className="fixed bottom-0 w-full pt-2 sm:pt-0 pb-6 sm:pb-0 left-0 sm:left-auto sm:bottom-auto sm:absolute right-0 rounded-t-lg rounded-tr-lg z-10 mt-2 sm:w-72 origin-top-right rounded-md bg-white focus:outline-none shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:shadow-lg">
-            <div className="flex flex-col">
-              <div className="flex justify-between items-center gap-4 p-4">
-                <div className="flex items-center gap-4">
+          <Menu.Items className="ui-fixed ui-bottom-0 ui-w-full ui-pt-2 sm:ui-pt-0 ui-pb-6 sm:ui-pb-0 ui-left-0 sm:ui-left-auto sm:ui-bottom-auto sm:ui-absolute ui-right-0 ui-rounded-t-lg ui-rounded-tr-lg ui-z-10 ui-mt-2 sm:ui-w-72 origin-top-right ui-rounded-md ui-bg-white focus:ui-outline-none ui-shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:ui-shadow-lg">
+            <div className="ui-flex ui-flex-col">
+              <div className="ui-flex ui-justify-between ui-items-center ui-gap-4 ui-p-4">
+                <div className="ui-flex ui-items-center ui-gap-4">
                   <Avatar avatar={avatar} />
-                  <div className="text-lg font-medium sm:text-base">{name}</div>
+                  <div className="ui-text-lg ui-font-medium sm:ui-text-base">
+                    {name}
+                  </div>
                 </div>
                 <Checkmark />
               </div>
-              <div className="pl-12 pb-4">
+              <div className="ui-pl-12 ui-pb-4">
                 {dropdownItems.map(({ label, link, callback }) => (
                   <Menu.Button
                     key={label}
@@ -76,9 +78,9 @@ const ProfileDropdown = ({
                     onClick={callback}
                     className={cls(
                       {
-                        "bg-gray-100": false,
+                        "ui-bg-gray-100": false,
                       },
-                      "block px-4 py-2 my-1 sm:my-0 text-base sm:text-sm text-black cursor-pointer font-medium hover:underline"
+                      "ui-block ui-px-4 ui-py-2 ui-my-1 sm:ui-my-0 ui-text-base sm:ui-text-sm ui-text-black ui-cursor-pointer ui-font-medium hover:underline"
                     )}
                   >
                     {label}
@@ -113,17 +115,17 @@ const ProfileDropdown = ({
 
               <Menu.Button
                 onClick={onLogOut}
-                className="flex border-t items-center gap-4 transition-all hover:bg-neutral-50 w-full"
+                className="ui-flex ui-border-t ui-items-center ui-gap-4 ui-transition-all hover:ui-bg-neutral-50 ui-w-full"
               >
-                <div className="flex justify-center items-center px-4 py-3 gap-4 w-full">
-                  <div className="flex items-center text-lg sm:text-base font-medium cursor-pointer">
+                <div className="ui-flex ui-justify-center ui-items-center ui-px-4 ui-py-3 ui-gap-4 ui-w-full">
+                  <div className="ui-flex ui-items-center ui-text-lg sm:ui-text-base ui-font-medium ui-cursor-pointer">
                     Log Out
                   </div>
                 </div>
               </Menu.Button>
             </div>
             {loading && (
-              <div className="absolute bg-white inset-0 flex items-center justify-center">
+              <div className="ui-absolute ui-bg-white ui-inset-0 ui-flex ui-items-center ui-justify-center">
                 <Spinner />
               </div>
             )}
@@ -132,45 +134,47 @@ const ProfileDropdown = ({
       ) : (
         <Transition
           as={React.Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
+          enter="ui-transition ui-ease-out ui-duration-100"
+          enterFrom="ui-transform ui-opacity-0 scale-95"
+          enterTo="ui-transform ui-opacity-100 scale-100"
+          leave="ui-transition ease-in ui-duration-75"
+          leaveFrom="ui-transform ui-opacity-100 scale-100"
+          leaveTo="ui-transform ui-opacity-0 scale-95"
         >
-          <Menu.Items className="fixed bottom-0 w-full pb-6 sm:pb-0 pt-2 sm:pt-0 left-0 sm:left-auto sm:bottom-auto sm:absolute right-0 rounded-tl-lg rounded-tr-lg z-10 mt-2 sm:w-72 origin-top-right sm:rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:shadow-lg">
-            <div className="flex items-center gap-4 p-4">
+          <Menu.Items className="ui-fixed ui-bottom-0 ui-w-full ui-pb-6 sm:ui-pb-0 ui-pt-2 sm:ui-pt-0 ui-left-0 sm:ui-left-auto sm:ui-bottom-auto sm:ui-absolute ui-right-0 ui-rounded-tl-lg ui-rounded-tr-lg ui-z-10 ui-mt-2 sm:ui-w-72 origin-top-right sm:ui-rounded-md ui-bg-white ui-ring-1 ui-ring-black ui-ring-opacity-5 focus:ui-outline-none ui-shadow-[0_35px_0px_2650px_rgba(0,0,0,0.2)] sm:ui-shadow-lg">
+            <div className="ui-flex ui-items-center ui-gap-4 ui-p-4">
               <div
                 onClick={() => toggleAccountsSection(false)}
                 role="button"
                 tabIndex={0}
-                className="h-7 w-7 bg-neutral-200 hover:bg-neutral-300 rounded flex items-center justify-center"
+                className="ui-h-7 ui-w-7 ui-bg-neutral-200 hover:ui-bg-neutral-300 ui-rounded ui-flex ui-items-center ui-justify-center"
               >
                 <ArrowBackIcon />
               </div>
-              <div className="font-medium cursor-pointer">Switch Accounts</div>
+              <div className="ui-font-medium ui-cursor-pointer">
+                Switch Accounts
+              </div>
             </div>
-            <div className="border-t">
+            <div className="ui-border-t">
               {inactiveAccounts.map((account) => (
                 <div
                   role="button"
                   tabIndex={0}
-                  className="w-full hover:bg-neutral-50"
+                  className="ui-w-full hover:ui-bg-neutral-50"
                   onClick={() => handleSwitchAccount(account.id)}
                 >
-                  <div className="flex justify-between items-center w-full gap-4 p-4">
-                    <div className="flex items-center gap-4">
+                  <div className="ui-flex ui-justify-between ui-items-center ui-w-full ui-gap-4 ui-p-4">
+                    <div className="ui-flex ui-items-center ui-gap-4">
                       <Avatar avatar={account.avatar} />
                       <div>{account.name}</div>
                     </div>
-                    <div className="w-4 h-4 rounded-full border border-neutral-500" />
+                    <div className="ui-w-4 ui-h-4 ui-rounded-full ui-border ui-border-neutral-500" />
                   </div>
                 </div>
               ))}
             </div>
             {loading && (
-              <div className="absolute bg-white inset-0 flex items-center justify-center">
+              <div className="ui-absolute ui-bg-white ui-inset-0 ui-flex ui-items-center ui-justify-center">
                 <Spinner />
               </div>
             )}

@@ -233,7 +233,7 @@ const CreativelyLogo = () => (
         d="M17.368 35C7.792 35 0 28.552 0 17.449 0 6.652 8.148 0 17.546 0 23.02 0 27.48 1.944 29.74 3.684h.18l.772-1.791h.535v10.746h-.416c-.832-2.968-1.666-4.861-2.855-6.601C25.576 2.609 22.305.717 17.487.717c-2.855 0-6.245.818-8.922 4.093-2.2 2.66-3.985 6.856-3.985 12.639 0 7.828 3.45 12.025 6.424 14.071 2.498 1.69 5.293 1.996 7.553 1.996 4.58 0 10.35-1.637 12.848-10.49l.595.153C30.334 30.446 24.683 35 17.368 35"
         fill="#303030"
       />
-      <g transform="translate(30 30)">
+      <g transform="ui-translate(30 30)">
         <mask id="b" fill="#fff">
           <use xlinkHref="#a" />
         </mask>
@@ -266,13 +266,20 @@ export const Avatar = ({
   extraDarkBg?: boolean;
 }) => {
   return avatar ? (
-    <img className="object-cover h-7 w-7 rounded" src={avatar} alt="" />
+    <img
+      className="ui-object-cover ui-h-7 ui-w-7 ui-rounded"
+      src={avatar}
+      alt=""
+    />
   ) : (
     <div
-      className={cls("h-7 w-7 rounded flex items-center justify-center", {
-        "bg-neutral-200": extraDarkBg,
-        "bg-neutral-100": !extraDarkBg,
-      })}
+      className={cls(
+        "ui-h-7 ui-w-7 ui-rounded ui-flex ui-items-center ui-justify-center",
+        {
+          "ui-bg-neutral-200": extraDarkBg,
+          "ui-bg-neutral-100": !extraDarkBg,
+        }
+      )}
     >
       <ProfileIcon />
     </div>
@@ -282,11 +289,11 @@ export const Avatar = ({
 const Avatars = ({ avatars }: { avatars: (string | undefined)[] }) => (
   <div>
     {avatars.length > 1 ? (
-      <div className="relative">
-        <div className="transform -translate-y-0.5 -translate-x-0.5">
+      <div className="ui-relative">
+        <div className="ui-transform -ui-translate-y-0.5 -ui-translate-x-0.5">
           <Avatar avatar={avatars[0]} />
         </div>
-        <div className="absolute top-0 left-0 transform translate-y-0.5 translate-x-0.5">
+        <div className="ui-absolute ui-top-0 ui-left-0 ui-transform ui-translate-y-0.5 ui-translate-x-0.5">
           <Avatar avatar={avatars[1]} />
         </div>
       </div>
@@ -310,18 +317,18 @@ const DesktopNavigationPanel = ({
     : navigation.filter((item) => !item.isLoggedIn);
 
   return (
-    <div className="hidden sm:ml-8 sm:block ">
-      <div className="flex gap-6">
+    <div className="ui-hidden sm:ui-ml-8 sm:ui-block ">
+      <div className="ui-flex ui-gap-6">
         {currentNav.map((item) => (
           <a
             key={item.name}
             href={item.href}
             className={cls(
               {
-                "shadow-[inset_0_-2px_0px_0px_rgba(0,0,0,1)]": item.current,
-                "text-gray-900 hover:text-black": !item.current,
+                "ui-shadow-[inset_0_-2px_0px_0px_rgba(0,0,0,1)]": item.current,
+                "ui-text-gray-900 hover:ui-text-black": !item.current,
               },
-              "h-16 flex items-center text-base font-medium"
+              "ui-h-16 ui-flex ui-items-center ui-text-base ui-font-medium"
             )}
             aria-current={item.current ? "page" : undefined}
           >
@@ -349,11 +356,11 @@ export const SwitchAccount = ({
     <div
       role="button"
       tabIndex={0}
-      className="flex border-t justify-between items-center px-4 py-3 gap-4 cursor-pointer transition-all	 hover:bg-neutral-50"
+      className="ui-flex ui-border-t ui-justify-between ui-items-center ui-px-4 ui-py-3 ui-gap-4 ui-cursor-pointer ui-transition-all hover:ui-bg-neutral-50"
     >
-      <div className="flex items-center gap-4  " onClick={onClick}>
+      <div className="ui-flex ui-items-center ui-gap-4" onClick={onClick}>
         <Avatars avatars={inactiveAccounts.map(({ avatar }) => avatar)} />
-        <div className="text-lg sm:text-base font-medium cursor-pointer">
+        <div className="ui-text-lg sm:ui-text-base ui-font-medium ui-cursor-pointer">
           Switch Account
         </div>
       </div>
@@ -387,15 +394,15 @@ export const Navigation = ({
     accounts.some(({ id }) => id === activeAccountID);
 
   return (
-    <div className="h-[400px] max-w-[100%]">
+    <div className="ui-h-[400px] ui-max-w-[100%]">
       <Disclosure
         as="nav"
-        className="bg-white border-b h-16 mx-2 flex items-center justify-between"
+        className="ui-bg-white ui-border-b ui-h-16 ui-mx-2 ui-flex ui-items-center ui-justify-between"
       >
-        <div className="w-full mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex items-center justify-between">
-            <div className="flex flex-1 ">
-              <div className="flex flex-shrink-0 items-center">
+        <div className="ui-w-full ui-mx-auto ui-max-w-7xl ui-px-2 sm:ui-px-6 lg:ui-px-8">
+          <div className="ui-relative ui-flex ui-items-center ui-justify-between">
+            <div className="ui-flex ui-flex-1">
+              <div className="ui-flex ui-flex-shrink-0 ui-items-center">
                 <CreativelyLogo />
               </div>
               <DesktopNavigationPanel
@@ -417,7 +424,7 @@ export const Navigation = ({
                 href={"#"}
                 onClick={onLogIn}
                 className={cls(
-                  "text-gray-900 hover:text-black h-16 flex items-center text-base font-medium"
+                  "ui-text-gray-900 hover:ui-text-black ui-h-16 ui-flex ui-items-center ui-text-base ui-font-medium"
                 )}
               >
                 Log In
@@ -438,30 +445,30 @@ const RightNavigationPanel = ({
   onAccountSwitch,
   onLogOut,
 }: TRightNavigationProps) => (
-  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+  <div className="ui-absolute ui-inset-y-0 ui-right-0 ui-flex ui-items-center ui-pr-2 sm:ui-static sm:ui-inset-auto sm:ui-ml-6 sm:ui-pr-0">
     <button
       type="button"
-      className="relative rounded-full p-1 mx-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      className="ui-relative ui-rounded-full ui-p-1 ui-mx-2 ui-text-gray-400 focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-white focus:ui-ring-offset-2 focus:ui-ring-offset-gray-800"
     >
-      <span className="absolute -inset-1.5" />
-      <span className="sr-only">View notifications</span>
+      <span className="ui-absolute -ui-inset-1.5" />
+      <span className="ui-sr-only">View notifications</span>
       <SearchIcon />
     </button>
     <button
       type="button"
-      className="relative rounded-full p-1 mx-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      className="ui-relative ui-rounded-full ui-p-1 ui-mx-2 ui-text-gray-400 focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-white focus:ui-ring-offset-2 focus:ui-ring-offset-gray-800"
     >
-      <span className="absolute -inset-1.5" />
-      <span className="sr-only">View notifications</span>
+      <span className="ui-absolute -ui-inset-1.5" />
+      <span className="ui-sr-only">View notifications</span>
       <EmailIcon />
     </button>
 
     <button
       type="button"
-      className="relative rounded-full p-1 mx-2 text-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      className="ui-relative ui-rounded-full ui-p-1 ui-mx-2 ui-text-gray-400 focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-white focus:ui-ring-offset-2 focus:ui-ring-offset-gray-800"
     >
-      <span className="absolute -inset-1.5" />
-      <span className="sr-only">View notifications</span>
+      <span className="ui-absolute -ui-inset-1.5" />
+      <span className="ui-sr-only">View notifications</span>
       <BellIcon />
     </button>
 

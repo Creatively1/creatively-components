@@ -1,6 +1,6 @@
 # tsup tailwindcss example
 
-This is a simple example to show how to bundle a library with CSS files using tsup. 
+This is a simple example to show how to bundle a library with CSS files using tsup.
 
 ```
 $ npm install
@@ -13,9 +13,8 @@ In you application, you can import the CSS file like this:
 
 ```js
 // Import CSS
-import 'my-lib-built-with-tsup/dist/index.css';
+import "ui-my-lib-built-with-tsup/dist/index.css";
 
-// Import JS 
-import { MY_CLASS_NAME } from 'my-lib-built-with-tsup';
+// Import JS
+import { MY_CLASS_NAME } from "ui-my-lib-built-with-tsup";
 ```
-
